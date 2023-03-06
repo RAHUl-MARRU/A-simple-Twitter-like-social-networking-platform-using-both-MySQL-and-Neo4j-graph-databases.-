@@ -1,0 +1,769 @@
+create database sample_twitter;
+use sample_twitter;
+
+drop table user;
+drop table login;
+drop table follower;
+drop table Response;
+drop table Geolocation;
+drop table tweet;
+
+create table user (
+userid int AUTO_INCREMENT,
+firstname varchar(25),
+lastname varchar(25),
+email varchar(20),
+phone_no varchar(15),
+dob date,
+account_type varchar(15),
+gender char(1),
+PRIMARY KEY (userid)
+);
+
+select * from user;
+
+INSERT INTO user (firstname, lastname, email, phone_no, dob, account_type, gender)
+VALUES ( 'rahul', 'marru', 'rm@gmail.com', 1234567890, '1999-06-23', 'personal', 'm');
+
+
+INSERT INTO user (firstname, lastname, email, phone_no, dob, account_type, gender)
+VALUES ( 'subbu', 'vijju', 'sv@gmail.com', 1234567891, '2000-06-05', 'personal', 'f'),
+	   ( 'venu', 'bavanam', 'vb@gmail.com', 1234567892, '2002-06-04', 'personal', 'm'),
+	   ( 'kush', 'neela', 'kn@gmail.com', 1234567893, '2001-06-03', 'creator', 'm'),
+ 	   ( 'abc', 'abcc', 'abc@gmail.com', 1234567894, '1999-06-02', 'creator', 'f'),
+       ( 'bcd', 'bcdd', 'bcd@gmail.com', 1234567895, '2000-06-01', 'creator', 'f'),
+       ( 'cde', 'cdee', 'cde@gmail.com', 1234567896, '1999-06-12', 'bussiness', 'm'),
+       ( 'def', 'deff', 'def@gmail.com', 1234567897, '2003-06-11', 'bussiness', 'f'),
+       ( 'efg', 'efgg', 'efg@gmail.com', 1234567898, '1999-06-10', 'bussiness', 'm'),
+       ( 'fgh', 'fghh', 'fgh@gmail.com', 1234567899, '2002-06-09', 'creator', 'f'),
+       ( 'ghi', 'ghii', 'ghi@gmail.com', 1234567800, '1998-06-08', 'personal', 'm'),
+       ( 'hij', 'hijj', 'hij@gmail.com', 1234567801, '1999-06-07', 'bussiness', 'm'),
+       ( 'ijk', 'ijkk', 'ijk@gmail.com', 1234567802, '1975-05-01', 'creator', 'f'),
+       ( 'jkl', 'jkll', 'jkl@gmail.com', 1234567803, '1986-05-02', 'personal', 'm'),
+       ( 'klm', 'klmm', 'klm@gmail.com', 1234567804, '1975-05-03', 'bussiness', 'f'),
+       ( 'lmn', 'mnll', 'mnl@gmail.com', 1234567805, '1999-05-04', 'creator', 'm'),
+       ( 'mno', 'mnoo', 'mno@gmail.com', 1234567806, '1995-05-05', 'personal', 'f'),
+       ( 'nop', 'nopp', 'nop@gmail.com', 1234567807, '1982-05-06', 'personal', 'm'),
+       ( 'opq', 'opqq', 'opq@gmail.com', 1234567808, '2000-05-07', 'creator', 'm'),
+       ( 'pqr', 'pqrr', 'pqr@gmail.com', 1234567809, '2001-05-08', 'creator', 'f'),
+       ( 'qrs', 'qrss', 'qrs@gmail.com', 1234567810, '1994-05-09', 'bussiness', 'm'),
+       ( 'rst', 'rstt', 'rst@gmail.com', 1234567811, '1996-05-10', 'bussiness', 'f'),
+       ( 'stu', 'stuuu', 'stu@gmail.com', 1234567812, '1979-05-11', 'personal', 'm'),
+       ( 'tuv', 'tuvv', 'tuv@gmail.com', 1234567813, '1994-05-12', 'personal', 'f'),
+       ( 'uvw', 'uvww', 'uvw@gmail.com', 1234567814, '1992-05-13', 'celebrity', 'm'),
+       ( 'vwx', 'vwxx', 'vwx@gmail.com', 1234567815, '1991-05-14', 'celebrity', 'f'),
+       ( 'wxy', 'wxyy', 'wxy@gmail.com', 1234567816, '1999-05-15', 'bussiness', 'm'),
+       ( 'xyz', 'xyzz', 'xyz@gmail.com', 1234567817, '1985-05-13', 'bussiness', 'f');
+       
+select * from user;   
+
+INSERT INTO user (firstname, lastname, email, phone_no, dob, account_type, gender)
+VALUES ( 'ab', 'abb', 'ab@gmail.com', 2234567891, '2000-01-01', 'personal', 'f'),
+	   ( 'bc', 'bcc', 'bc@gmail.com', 2234567892, '1986-01-02', 'personal', 'm'),
+       ( 'cd', 'cdd', 'cd@gmail.com', 3234567892, '1987-01-03', 'bussiness', 'm'),
+       ( 'de', 'dee', 'de@gmail.com', 4234567892, '1985-01-04', 'bussiness', 'f'),
+       ( 'ef', 'eff', 'ef@gmail.com', 5234567892, '1984-01-05', 'celebrity', 'm'),
+       ( 'fg', 'fgg', 'fg@gmail.com', 6234567892, '1983-01-06', 'celebrity', 'f'),
+       ( 'gh', 'ghh', 'gh@gmail.com', 7234567892, '1982-01-02', 'personal', 'm'),
+       ( 'hi', 'hii', 'hi@gmail.com', 8234567892, '1981-01-07', 'personal', 'm'),
+       ( 'ij', 'ijj', 'ij@gmail.com', 9234567892, '1979-01-06', 'personal', 'm'),
+       ( 'jl', 'jll', 'jl@gmail.com', 1034567892, '1978-01-08', 'personal', 'm'),
+	   ( 'lm', 'lmm', 'lm@gmail.com', 1134567892, '1977-01-09', 'personal', 'm'),
+       ( 'mn', 'mnn', 'mn@gmail.com', 2234567892, '1976-01-10', 'personal', 'm'),
+       ( 'no', 'noo', 'no@gmail.com', 3334567892, '1975-01-11', 'personal', 'f'),
+       ( 'op', 'opp', 'op@gmail.com', 4434567892, '1996-01-09', 'personal', 'f'),
+       ( 'pq', 'pqq', 'pq@gmail.com', 5534567892, '1998-01-10', 'personal', 'f');
+       
+INSERT INTO user (firstname, lastname, email, phone_no, dob, account_type, gender)
+VALUES ( 'qr', 'qr', 'qr@gmail.com', 6634567891, '2000-01-01', 'personal', 'f'),
+	   ( 'rs', 'rs', 'brs@gmail.com', 7734567892, '2001-01-02', 'personal', 'm'),
+       ( 'ts', 'st', 'st@gmail.com', 8834567892, '2002-01-02', 'personal', 'm'),
+       ( 'su', 'su', 'su@gmail.com', 9934567892, '2003-01-02', 'personal', 'f'),
+       ( 'uv', 'uv', 'uv@gmail.com', 7714567892, '2004-01-02', 'personal', 'm'),
+       ( 'vw', 'vw', 'vw@gmail.com', 7724567892, '2005-01-02', 'personal', 'f'),
+       ( 'wx', 'wx', 'wx@gmail.com', 7744567892, '2006-01-02', 'personal', 'm'),
+       ( 'xy', 'xy', 'xy@gmail.com', 7754567892, '2007-01-02', 'personal', 'f'),
+       ( 'yz', 'yz', 'yz@gmail.com', 7764567892, '2008-01-02', 'personal', 'm'),
+	   ( 'za', 'za', 'za@gmail.com', 7834567892, '2009-02-02', 'personal', 'm');      
+
+       
+select * from user;       
+ 
+-- drop table profile_page;
+
+create table profile_page(
+profile_id int AUTO_INCREMENT,
+user_id int,
+screen_name varchar(25),
+follower_count int,
+friends_count int,
+favorites_count int,
+total_tweets int,
+PRIMARY KEY (profile_id),
+FOREIGN KEY (profile_id) REFERENCES user(userid)
+
+);
+
+select * from profile_page;
+
+INSERT INTO profile_page (user_id, screen_name, follower_count, friends_count, favorites_count, total_tweets)
+values( 1, '@mr1', 999 , 555, 225, 1200);
+
+INSERT INTO profile_page (user_id, screen_name, follower_count, friends_count, favorites_count, total_tweets)
+values( 2, '@sb1', 752 , 989, 150, 852),
+	  ( 3, '@venu03', 625 , 756, 250, 645),
+      ( 4, '@nk02', 823 , 789, 325, 426),
+      ( 5, '@abc01', 123 , 345, 111, 511),
+      ( 6, '@bcd02', 234 , 456, 222, 611),
+      ( 7, '@cde03', 456 , 789, 333, 777),
+      ( 8, '@def04', 567 , 542, 444, 555),
+      ( 9, '@efg05', 678 , 756, 113, 123),
+       ( 10, '@fgh06', 789 , 612,114, 426),
+       ( 11, '@ghi07', 890 , 746, 115, 758),
+       ( 12, '@hij08', 112 , 954, 117, 658),
+       ( 13, '@ijk09', 121 , 146, 118, 425),
+       ( 14, '@jkl10', 131 , 456, 119, 426),
+       ( 15, '@klm11', 141 , 342, 121, 427),
+       ( 16, '@lmn12', 151 , 842, 131, 428),
+       ( 17, '@mno13', 161 , 862, 141, 429),
+       ( 18, '@nop14', 171 , 458, 151, 421),
+       ( 19, '@opq15', 181 , 452, 171, 422),
+       ( 20, '@pqr16', 191 , 365, 181, 423),
+       ( 21, '@qrs17', 987 , 563, 191, 424),
+       ( 22, '@rst18', 876 , 785, 121, 430),
+       ( 23, '@stu19', 765 , 587, 321, 431),
+       ( 24, '@tuv20', 654 , 985, 323, 432),
+       ( 25, '@uvw21', 543 , 589, 324, 433),
+       ( 26, '@vwx22', 432 , 145, 325, 434),
+       ( 27, '@wxy23', 321 , 541, 326, 435),
+       ( 28, '@xyz24', 210 , 365, 327, 436),
+       ( 29, '@ab01', 989 , 563 ,328, 437),
+       ( 30, '@bc02', 981 , 123, 329, 438),
+       ( 31, '@cd03', 881 , 321, 330, 500),
+       ( 32, '@de04', 822 , 456, 331, 510),
+       ( 33, '@ef05', 823 , 654, 332, 512),
+       ( 34, '@fg06', 824 , 987, 333, 513),
+       ( 35, '@gh07', 825 , 963, 334, 514),
+       ( 36, '@hi08', 826 , 369, 335, 515),
+       ( 37, '@ij09', 827 , 324, 336, 516),
+       ( 38, '@jk10', 828 , 741, 337, 715),
+       ( 39, '@kl11', 829 , 147, 338, 716),
+       ( 40, '@lm12', 832 , 158, 339, 712),
+       ( 41, '@mn13', 833 , 948, 340, 815),
+       ( 42, '@no14', 843 , 746, 341, 713),
+       ( 43, '@op15', 853 , 420, 342, 816),
+       ( 44, '@pq16', 863 , 421, 343, 817),
+       ( 45, '@qr17', 873 , 422, 344, 818),
+       ( 46, '@rs18', 883 , 423, 345, 615),
+       ( 47, '@su19', 893 , 424, 346, 616),
+       ( 48, '@uv20', 745 , 425, 347, 617),
+       ( 49, '@vw21', 756 , 426, 348, 618),
+       ( 50, '@wx22', 767 , 427, 349, 521),
+       ( 51, '@xy23', 150 , 428, 350, 522),
+       ( 52, '@yz24', 250 , 429, 351, 523),
+       ( 53, '@za25', 350 , 430, 352, 423);
+       
+select * from profile_page;
+
+-- drop table tweet;
+
+create table tweet(
+post_id int AUTO_INCREMENT,
+user_id int,
+tweet_caterogy varchar(20),
+tweet_caption varchar(20),
+tweet_status char(20),
+tweet_lang varchar(25),
+Is_commented char(5),
+total_retweets int,
+PRIMARY KEY (post_id),
+FOREIGN KEY (user_id) REFERENCES user(userid)
+);
+
+select * from tweet;
+
+insert into tweet(user_id, tweet_caterogy, tweet_caption, tweet_status, tweet_lang, Is_commented, total_retweets )
+values(10, 'text', 'mahesh babu', 'deleted', 'eng', 'no', 10 );
+
+insert into tweet(user_id, tweet_caterogy, tweet_caption, tweet_status, tweet_lang, Is_commented, total_retweets)
+values(20, 'text', 'ntr', 'not deleted', 'telugu', 'yes',5 ),
+	  (30, 'video', 'beach', 'not deleted', 'hindi', 'yes',25 ),
+      (40, 'audio', 'ntr', 'not deleted', 'tamil', 'yes',36 ),
+      (50, 'text', 'heroes', 'not deleted', 'english', 'yes',100 ),
+      (11, 'audio', 'ram charan', 'deleted', 'telugu', 'no',200 ),
+      (21, 'text', 'ram charan', 'not deleted', 'telugu', 'yes',400 ),
+      (31, 'audio', 'ram ', 'deleted', 'telugu', 'no',130 ),
+      (41, 'audio', 'charan', 'deleted', 'telugu', 'no',300 ),
+      (51, 'text', 'ram', 'deleted', 'telugu', 'no',20 ),
+      (12, 'text', 'charan', 'deleted', 'telugu', 'no',43 ),
+      (22, 'video', 'charan', 'not deleted', 'telugu', 'yes',63 ),
+      (32, 'video', 'ram', 'not deleted', 'telugu', 'yes',75 ),
+      (42, 'audio', 'neela kush', 'not deleted', 'telugu', 'yes',80 ),
+      (52, 'text', 'kush', 'not deleted', 'hindi', 'yes',90 ),
+      (13, 'video', 'neela', 'not deleted', 'hindi', 'yes', 234 ),
+      (23, 'text', 'neela kush', 'not deleted', 'hindi', 'yes', 420 ),
+      (33, 'audio', 'venu reddy', 'not deleted', 'english', 'yes', 630 ),
+      (43, 'text', 'venu', 'not deleted', 'english', 'yes', 521 ),
+      (53, 'video', 'venu reddy', 'not deleted', 'english', 'yes', 423 ),
+      (14, 'audio', 'jai ntr', 'not deleted', 'english', 'yes', 243 ),
+      (24, 'video', 'jai prabhas', 'not deleted', 'english', 'yes', 6 ),
+      (34, 'text', 'sunil thop', 'not deleted', 'telugu', 'yes', 1 ),
+      (44, 'audio', 'sunil anna', 'deleted', 'english', 'no', 3 ),
+      (15, 'text', 'power star', 'not deleted', 'telugu', 'yes', 56 ),
+      (25, 'audio', 'power star', 'not deleted', 'english', 'yes',89 ),
+      (35, 'video', 'power star', 'not deleted', 'english', 'yes',90 ),
+      (45, 'audio', 'super star', 'not deleted', 'telugu', 'yes',91 ),
+      (16, 'text', 'super star', 'deleted', 'telugu', 'no',56 ),
+      (26, 'video', 'super star', 'not deleted', 'tamil', 'yes',57 ),
+      (36, 'audio', 'mass maha raj', 'not deleted', 'telugu', 'yes',56 ),
+      (46, 'text', 'mass maha raj', 'not deleted', 'english', 'yes',24 ),
+      (17, 'text', 'mass', 'not deleted', 'english', 'yes',63 ),
+      (27, 'text', 'maha', 'not deleted', 'english', 'yes',75 ),
+      (37, 'text', 'mass maha raj', 'not deleted', 'english', 'yes',45 ),
+      (47, 'text', 'raj', 'not deleted', 'english', 'yes',36 ),
+      (18, 'video', 'raj', 'not deleted', 'telugu', 'yes',75 ),
+      (28, 'video', 'krk', 'not deleted', 'tamil', 'yes',65 ),
+      (38, 'audio', 'krk movie', 'deleted', 'telugu', 'no',86 ),
+      (48, 'text', 'krk super', 'not deleted', 'english', 'yes',96 ),
+      (19, 'video', 'rrr', 'not deleted', 'telugu', 'yes',200 ),
+      (29, 'text', 'rrr super hit', 'not deleted', 'telugu', 'yes',350 ),
+      (39, 'audio', 'rrr www', 'not deleted', 'english', 'yes',533 ),
+      (49, 'video', 'money hesit', 'not deleted', 'english', 'yes',20 ),
+      (1, 'video', 'raj', 'not deleted', 'telugu', 'yes',35 ),
+      (2, 'audio', 'sunil anna', 'deleted', 'english', 'no', 45 ),
+      (3, 'text', 'power star', 'not deleted', 'telugu', 'yes',35 ),
+      (4, 'audio', 'power star', 'not deleted', 'english', 'yes',64 ),
+      (5, 'video', 'power star', 'not deleted', 'english', 'yes',86 ),
+      (6, 'audio', 'super star', 'not deleted', 'telugu', 'yes',96 ),
+      (7, 'text', 'super star', 'deleted', 'telugu', 'no',56 ),
+      (8, 'video', 'super star', 'not deleted', 'tamil', 'yes',35 ),
+      (9, 'audio', 'mass maha raj', 'not deleted', 'telugu', 'yes',86 ),
+      (46, 'text', 'mass maha raj', 'not deleted', 'english', 'yes',96 ),
+      (17, 'text', 'mass', 'not deleted', 'english', 'yes',46 ),
+      (27, 'text', 'maha', 'not deleted', 'english', 'yes',76 ),
+      (37, 'text', 'mass maha raj', 'not deleted', 'english', 'yes',63 ),
+      (47, 'text', 'raj', 'not deleted', 'english', 'yes',96 ),
+      (18, 'video', 'raj', 'not deleted', 'telugu', 'yes',36 ),
+      (28, 'video', 'krk', 'not deleted', 'tamil', 'yes',27 ),
+      (38, 'audio', 'krk movie', 'deleted', 'telugu', 'no',649 ),
+      (48, 'text', 'krk super', 'not deleted', 'english', 'yes',32 ),
+      (19, 'video', 'rrr', 'not deleted', 'telugu', 'yes',65 ),
+      (29, 'text', 'rrr super hit', 'not deleted', 'telugu', 'yes',63 ),
+      (39, 'audio', 'rrr www', 'not deleted', 'english', 'yes',86 ),
+      (49, 'video', 'money hesit', 'not deleted', 'english', 'yes',42 );
+      
+select * from tweet;
+
+ -- drop table retweet;
+
+create table retweet(
+retweet_id int AUTO_INCREMENT,
+user_id int,
+tweet_id int,
+retweet_status char(15),
+Is_liked char(5),
+created_on date,
+PRIMARY KEY (retweet_id),
+FOREIGN KEY (tweet_id) REFERENCES tweet(post_id),
+FOREIGN KEY (user_id) REFERENCES user(userid)
+);
+
+select * from retweet;
+
+insert into retweet(user_id,tweet_id,retweet_status,Is_liked,created_on)
+values(15,26,'present','y','2021-06-05');
+
+insert into retweet(user_id,tweet_id,retweet_status,Is_liked,created_on)
+values(25,36,'present','y','2022-04-15'),
+	  (35,46,'deleted','y','2022-03-25'),
+      (45,56,'present','y','2019-04-15'),
+      (16,27,'present','y','2021-01-23'),
+      (26,37,'present','y','2015-09-25'),
+      (36,47,'deleted','y','2015-09-21'),
+      (46,57,'present','n','2014-03-29'),
+      (17,28,'present','n','2018-10-13'),
+      (27,38,'deleted','n','2020-12-15'),
+      (37,48,'present','y','2016-05-18'),
+      (47,58,'present','n','2017-06-23'),
+      (18,29,'deleted','y','2016-04-02'),
+      (28,39,'present','n','2013-03-26'),
+      (38,49,'present','y','2014-01-23'),
+      (48,59,'deleted','n','2014-12-26'),
+      (19,30,'present','y','2015-12-12'),
+      (29,40,'present','n','2012-05-22'),
+      (39,50,'deleted','y','2016-11-25'),
+      (49,60,'present','n','2017-12-26'),
+      (20,21,'present','y','2019-02-23'),
+      (30,31,'present','y','2015-12-24'),
+      (40,41,'deleted','n','2018-02-16'),
+      (50,51,'present','n','2013-05-21'),
+      (1,60,'present','n','2016-02-21'),
+      (2,61,'deleted','y','2017-01-11'),
+      (3,62,'present','y','2014-11-18'),
+      (4,63,'present','y','2016-04-12'),
+      (5,64,'deleted','y','2020-06-10'),
+      (6,65,'present','y','2008-10-06'),
+      (7,66,'present','n','2008-08-24'),
+      (11,1,'deleted','y','2006-07-05'),
+      (12,2,'present','n','2017-02-16'),
+      (13,5,'present','y','2018-05-31'),
+	  (38,49,'present','y','2014-01-23'),
+      (48,59,'deleted','n','2014-12-26'),
+      (19,30,'present','y','2015-12-12'),
+      (29,40,'present','n','2012-05-22'),
+      (39,50,'deleted','y','2016-11-25'),
+      (49,60,'present','n','2017-12-26'),
+      (20,21,'present','y','2019-02-23'),
+      (30,31,'present','y','2015-12-24'),
+      (40,41,'deleted','n','2018-02-16'),
+      (50,51,'present','n','2013-05-21'),
+      (1,60,'present','n','2016-02-21'),
+      (2,61,'deleted','y','2017-01-11'),
+      (3,62,'present','y','2014-11-18'),
+      (4,63,'present','y','2016-04-12'),
+      (5,64,'deleted','y','2020-06-10'),
+      (6,66,'deleted','n','2009-10-15'),
+      (10,11,'present','y','2021-07-15'),
+      (11,12,'present','y','2020-04-15'),
+      (12,13,'deleted','y','2021-01-18'),
+      (16,16,'present','n','2002-04-03'),
+      (5,64,'present','y','2020-04-07');
+      
+select * from retweet;
+
+create table login(
+login_id int AUTO_INCREMENT,
+user_id int,
+username varchar(16),
+password varchar(32),
+account_created timestamp,
+PRIMARY KEY (login_id),
+FOREIGN KEY (user_id) REFERENCES user(userid)
+);
+
+select * from login;
+
+ALTER TABLE login
+ADD Is_active_account char(5);
+
+use sample_twitter;
+
+Select * from login;
+
+insert into login(user_id,username,password,account_created,Is_active_account)
+values(1,'rmarru','rm2022','2018-11-11 13:23:44' ,'y'),
+	   (2,'svijju','sv2021','2019-12-12 14:25:46' ,'y'),
+       (3,'bvenu','bv2014','2014-08-19 17:23:57' ,'n'),
+       (4,'nkush','nk2022','2020-04-15 12:25:45' ,'y');
+
+insert into login(user_id,username,password,account_created,Is_active_account)
+values( 5, 'abc01', 'abc123' , '2022-07-27 21:23:05', 'y'),
+      ( 6, 'bcd02', 'bcd234' , '2011-10-07 22:13:29', 'n'),
+      ( 7, 'cde03', 'cde456' , '2009-02-26 22:17:02', 'y'),
+      ( 8, 'def04', 'def567' , '2013-02-01 11:05:07', 'y'),
+      ( 9, 'efg05', 'efg678' , '2015-09-04 18:51:03', 'y'),
+       ( 10, 'fgh06', 'fgh789' , '2018-09-12 22:34:22','y'),
+       ( 11, 'ghi07', 'ghi890' , '2009-01-03 09:53:10', 'n'),
+       ( 12, 'hij08', 'hij112' , '2014-01-10 00:10:59', 'y'),
+       ( 13, 'ijk09', 'ijk121' , '2017-08-01 21:12:52', 'y'),
+       ( 14, 'jkl10', 'jkl131' , '2007-04-09 00:20:18', 'n'),
+       ( 15, 'klm11', 'klm141' , '2011-06-28 23:01:24', 'y'),
+       ( 16, 'lmn12', 'lmn151' , '2015-09-03 21:34:57', 'y'),
+       ( 17, 'mno13', 'mno161' , '2011-11-22 01:33:53', 'y'),
+       ( 18, 'nop14', 'nop171' , '2000-11-04 14:43:46', 'n'),
+       ( 19, 'opq15', 'opq181' , '2005-02-06 15:09:14', 'y'),
+       ( 20, 'pqr16', 'pqr191' , '2010-09-05 08:11:34', 'y'),
+       ( 21, 'qrs17', 'qrs987' , '2002-02-13 00:49:13', 'n'),
+       ( 22, 'rst18', 'rst876' , '2019-05-03 11:33:08', 'y'),
+       ( 23, 'stu19', 'stu765' , '2003-07-05 14:22:48', 'y'),
+       ( 24, 'tuv20', 'tuv654' , '2011-11-16 10:39:02', 'y'),
+       ( 25, 'uvw21', 'uvw543' , '2020-07-16 23:24:40', 'y'),
+       ( 26, 'vwx22', 'vwx432' , '2000-01-02 18:11:30', 'n'),
+       ( 27, 'wxy23', 'wxy321' , '2017-05-11 06:05:55', 'y'),
+       ( 28, 'xyz24', 'xyz210' , '2014-03-09 07:57:12', 'y'),
+       ( 29, 'ab01', 'ab989' , '2004-08-22 16:00:16' , 'y'),
+       ( 30, 'bc02', 'bc981' , '2000-08-14 05:34:27', 'y'),
+       ( 31, 'cd03', 'cd881' , '2013-02-14 13:28:52', 'y'),
+       ( 32, 'de04', 'de822' , '2021-02-18 02:56:28', 'y'),
+       ( 33, 'ef05', 'ef823' , '2016-01-06 11:38:17', 'y'),
+       ( 34, 'fg06', 'fg824' , '2018-12-16 14:43:25', 'y'),
+       ( 35, 'gh07', 'gh825' , '2002-04-27 06:32:58', 'n'),
+       ( 36, 'hi08', 'hi826' , '2002-05-11 11:20:23', 'y'),
+       ( 37, 'ij09', 'ij827' , '2018-07-18 22:43:37', 'y'),
+       ( 38, 'jk10', 'jk828' , '2016-11-23 09:06:00', 'y'),
+       ( 39, 'kl11', 'kl829' , '2013-05-12 04:35:19', 'n'),
+       ( 40, 'lm12', 'lm832' , '2007-07-27 05:13:12', 'y'),
+       ( 41, 'mn13', 'mn833' , '2017-09-07 06:05:11', 'y'),
+       ( 42, 'no14', 'no843' , '2005-10-22 03:11:33', 'y'),
+       ( 43, 'op15', 'op853' , '2018-07-06 06:49:48', 'y'),
+       ( 44, 'pq16', 'pq863' , '2002-12-22 19:44:33', 'n'),
+       ( 45, 'qr17', 'qr873' , '2019-09-10 10:07:22', 'y'),
+       ( 46, 'rs18', 'rs883' , '2008-06-13 17:19:21', 'y'),
+       ( 47, 'su19', 'su893' , '2004-10-25 04:19:42', 'y'),
+       ( 48, 'uv20', 'uv745' , '2004-11-20 10:19:22', 'y'),
+       ( 49, 'vw21', 'vw756' , '2011-10-26 14:55:24', 'n'),
+       ( 50, 'wx22', 'wx767' , '2016-08-03 19:34:13', 'y'),
+       ( 51, 'xy23', 'xy150' , '1999-10-16 06:37:52', 'y'),
+       ( 52, 'yz24', 'yz250' , '2009-04-18 01:43:49', 'y'),
+       ( 53, 'za25', 'za350' , '2003-09-12 07:15:57', 'n');
+       
+select * from login;
+
+-- drop table follower;
+
+create table follower(
+follower_id int AUTO_INCREMENT,
+user_id int,
+follower_screen_name varchar(15),
+PRIMARY KEY (follower_id),
+FOREIGN KEY (user_id) REFERENCES user(userid)
+);
+
+
+
+ALTER TABLE follower
+ADD user_followback char(5);
+
+select * from follower;
+
+insert into follower(user_id,follower_screen_name,user_followback)
+values(2, "@abc", 'yes'),
+(1,'@def04', 'yes'),
+(13,'@efg05', 'yes'),
+(25,'@fgh06', 'no'),
+(35,'@ghi07', 'yes'),
+(46,'@hij08', 'yes'),
+(53,'@ijk09', 'no'),
+(2,'@jkl10', 'no'),
+(2,'@klm11', 'yes'),
+(15,'@lmn12', 'yes'),
+(4,'@mno13', 'yes'),
+(30,'@nop14', 'yes'),
+(21,'@opq15', 'yes'),
+(18,'@pqr16', 'yes'),
+(2,'@qrs17', 'yes'),
+(2,'@rst18', 'yes'),
+(4,'@stu19', 'yes'),
+(12,'@tuv20', 'yes'),
+(2,'@uvw21', 'no'),
+(1,'@vwx22', 'yes'),
+(4,'@wxy23', 'yes'),
+(2,'@xyz24', 'yes'),
+(5,'@ab01', 'yes'),
+(26,'@bc02', 'yes'),
+(12,'@cd03', 'no'),
+(13,'@de04', 'yes'),
+(16,'@ef05', 'yes'),
+(2,'@fg06', 'yes'),
+(21,'@gh07', 'yes'),
+(23,'@hi08', 'yes'),
+(26,'@ij09', 'yes'),
+(2,'@jk10', 'yes'),
+(31,'@kl11', 'yes'),
+(32,'@lm12', 'yes'),
+(36,'@mn13', 'yes'),
+(43,'@no14', 'yes'),
+(46,'@op15', 'yes'),
+(51,'@pq16', 'yes'),
+(53,'@qr17', 'yes'),
+(2,'@rs18', 'yes'),
+(4,'@su19', 'yes'),
+(12,'@tuv20', 'yes'),
+(2,'@uvw21', 'yes'),
+(1,'@vwx22', 'yes'),
+(4,'@wxy23', 'no'),
+(2,'@xyz24', 'yes'),
+(5,'@ab01', 'yes'),
+(26,'@bc02', 'yes'),
+(12,'@cd03', 'yes'),
+(13,'@de04', 'yes'),
+(16,'@ef05', 'yes'),
+(2,'@fg06', 'yes'),
+(21,'@gh07', 'no'),
+(23,'@hi08', 'yes'),
+(26,'@ij09', 'yes'),
+(2,'@jk10', 'yes'),
+(31,'@kl11', 'yes');
+
+select * from follower;
+
+-- drop table geolocation;
+
+create table geolocation(
+Geloc_id int auto_increment,
+tweet_id int,
+user_id int,
+country varchar(25),
+city varchar(25),
+Is_Geoloc_Trending char(1),
+PRIMARY KEY (Geloc_id),
+FOREIGN KEY (user_id) REFERENCES user(userid),
+FOREIGN KEY (tweet_id) REFERENCES tweet(post_id)
+);
+
+select * from Geolocation;
+
+insert into Geolocation(tweet_id,user_id,country,city,Is_Geoloc_trending)
+values(26,35,'USA','Albuquerque','N');
+
+insert into Geolocation(tweet_id,user_id,country,city,Is_Geoloc_trending)
+values (30, 26, 'USA', 'Albuquerque' ,'N'),
+(31, 36, 'USA', 'Sacramento' ,'N'),
+(32, 46, 'india', 'hyderbad' ,'N'),
+(33, 17, 'Uk', 'Blackpool' ,'y'),
+(34, 27, 'india', 'mumbai' ,'y'),
+(35, 37, 'USA', 'Pittsburgh' ,'y'),
+(36, 47, 'india', 'khammam' ,'N'),
+(37, 18, 'USA', 'Cleveland' ,'N'),
+(38, 28, 'USA', 'Arlington' ,'y'),
+(39, 38, 'india', 'chennai' ,'y'),
+(40, 48, 'USA', 'Toledo' ,'y'),
+(41, 19, 'USA', 'Columbus' ,'N'),
+(42, 29, 'UK', 'Bournemouth' ,'N'),
+(43, 39, 'india', 'delhi' ,'y'),
+(44, 49, 'USA', 'Plano' ,'y'),
+(45, 1, 'USA', 'Jacksonville' ,'y'),
+(46, 2, 'USA', 'Wichita' ,'y'),
+(47, 3, 'USA', 'North Hempstead' ,'N'),
+(48, 4, 'USA', 'Montgomery' ,'y'),
+(49, 5, 'india', 'wargal' ,'y'),
+(50, 6, 'USA', 'Buffalo' ,'y'),
+(51, 7, 'UK', 'Luton' ,'N'),
+(1,	10, 'USA', 'Laredo' ,'y'),
+(2,	20, 'USA', 'Austin' ,'Y'),
+(3,	30, 'UK', 'Middlesbrough' ,'y'),
+(4,	40, 'USA', 'Raleigh' ,'N'),
+(5,	50, 'USA', 'San Diego' ,'y'),
+(6,	11, 'USA', 'Arlington' ,'y'),
+(7,	21, 'USA', 'Washington' ,'y'),
+(8,	31, 'UK', 'Hartlepool' ,'y'),
+(9,	41, 'USA', 'St. Paul' ,'y'),
+(10, 51, 'india', 'tirupathi' ,'N'),
+(11, 12, 'USA', 'Seattle' ,'N'),
+(12, 22, 'UK', 'Bristol' ,'N'),
+(13, 32, 'USA', 'Birmingham' ,'y'),
+(14, 42, 'USA', 'Colorado Springs' ,'y'),
+(15, 52, 'USA', 'Minneapolis' ,'y'),
+(16, 13, 'UK', 'Hartlepool' ,'y'),
+(17, 23, 'USA', 'Austin' ,'y'),
+(18, 33, 'UK', 'Durham' ,'y'),
+(19, 43, 'USA', 'Plano' ,'N'),
+(20, 53, 'USA', 'San Antonio' ,'y'),
+(21, 14, 'USA', 'St. Paul' ,'N'),
+(22, 24, 'USA', 'Detroit' ,'y'),
+(23, 34, 'UK', 'Baltimore' ,'y'),
+(24, 44, 'USA', 'Chesapeake' ,'y'),
+(25, 15, 'USA', 'Portland' ,'y'),
+(26, 25, 'USA', 'Nashville-Davidson' ,'N'),
+(27, 35, 'UK', 'Riverside' ,'y'),
+(28, 45, 'USA', 'Fort Wayne' ,'y'),
+(29, 16, 'USA', 'Durham' ,'y'),
+(52, 8, 'UK', 'Durham' ,'N'),
+(53, 9, 'USA', 'Nashville-Davidson' ,'y'),
+(54, 46, 'UK', 'Portland' ,'y'),
+(55, 17, 'USA', 'Nashville-Davidson' ,'N');
+
+SELECT * FROM Geolocation;
+
+-- drop table Response;
+
+create table Response(
+response_id int auto_increment,
+tweet_id int,
+total_likes int,
+total_comments int,
+PRIMARY KEY (response_id),
+FOREIGN KEY (tweet_id) REFERENCES tweet(post_id)
+
+
+);
+
+ALTER TABLE Response AUTO_INCREMENT = 100;
+
+select * from Response;
+
+Insert into Response(tweet_id,total_likes,total_comments)
+values(66,250,425),
+	  (56,126,562),
+      (46,288,177),
+      (36,106,325),
+      (26,358,390),
+      (16,382,460),
+      (06,221,153),
+      (05,397,259),
+      (15,671,393),
+      (25,576,218),
+      (35,684,176),
+      (45,234,513),
+      (55,238,215),
+      (65,451,188),
+      (64,188,193),
+      (54,109,355),
+      (44,126,562),
+      (34,217,170),
+	  (24,292,282),
+	  (14,356,188),
+      (04,466,299),
+      (03,419,345),
+      (13,651,195),
+      (23,166,613),
+      (33,271,519),
+      (43,337,450),
+      (53,465,186),
+      (63,311,357),
+      (62,687,507),
+      (52,499,373),
+      (42,233,630),
+      (32,166,520),
+      (22,376,282),
+      (12,643,340),
+      (02,182,254),
+      (01,511,613),
+      (11,429,536),
+      (21,355,366),
+      (31,659,247),
+      (41,561,686),
+      (51,148,376),
+      (61,464,383),
+      (10,126,217),
+      (20,126,404),
+      (30,126,649),
+      (40,603,391),
+      (50,126,358),
+      (51,148,376),
+      (61,464,383),
+      (10,126,217),
+      (20,126,404),
+      (60,298,477);
+      
+Select * from Response;
+
+
+-- 1. Show the User with posted highest tweets.
+SELECT  user.firstname, profile_page.total_tweets
+FROM user
+INNER JOIN profile_page
+ON user.userid = profile_page.user_id
+ORDER BY profile_page.total_tweets DESC
+LIMIT 5;
+
+-- 2. what language mostly used to tweets/posts by user in count of which most used caterogy.
+
+select MAX(tweet_lang), Max(tweet_caterogy)
+from tweet;
+
+-- 3. show Top 5 users with most number of friends on twitter
+select screen_name,friends_count 
+from profile_page 
+order by friends_count desc limit 5;
+
+-- 4. show the tweet with more number of comments 
+select tweet.post_id, tweet.tweet_caterogy, tweet.total_retweets, response.total_comments
+from response
+inner join tweet
+on  response.tweet_id = tweet.post_id
+order by total_comments desc limit 1;
+
+
+select * from login;
+select * from profile_page;
+select * from response;
+select * from retweet;
+select * from tweet;
+select * from user;
+SELECT * FROM follower;
+select * from geolocation;
+
+-- 	5. Find any users whose ACCOUNT CREATED ON  2020 year 
+
+SELECT login.account_created, user.email, user.phone_no, login.Is_active_account
+FROM user
+INNER JOIN login
+ON user.userid = login.user_id
+where login.account_created LIKE '__20%';
+
+
+---- 6. Retrieve  the  USER WHO ARE TWEETED From the COUNTRY INDIA in chennai.
+
+SELECT geolocation.country,geolocation.city,user.firstname,user.lastname
+FROM user
+INNER JOIN geolocation
+ON user.userid = geolocation.user_id
+where geolocation.city = "chennai";   
+
+--  7. re arrange tweets in sorted  alphabetically
+
+select * from tweet
+order by tweet_caption; 
+
+-- 8. show the tweets which have the likes in between 200 to 400 by followers.
+
+SELECT tweet.tweet_caption,response.total_likes
+FROM tweet
+INNER JOIN response
+ON tweet.post_id = response.tweet_id
+where  response.total_likes between  200  and  400; 
+
+-- 9. show the followers for a selected specific user in twitter.
+
+SELECT follower.follower_screen_name, concat(user.firstname," ",user.lastname) as username
+FROM user
+INNER JOIN follower 
+ON user.userid = follower.user_id
+where  user.firstname = "subbu"; 
+
+SELECT follower_count,profile_id
+FROM profile_page;
+
+
+-- 10. total number of responses given to tweets.
+
+select count(response_id) 
+from response;
+
+-- 11. Find all retweets made after the 2017 by users.
+
+select retweet_id, user_id, created_on
+from retweet
+where created_on >= "2017-01-01";
+
+
+-- 12. show the user tweet which has least number of retweets
+
+SELECT user.lastname, tweet.total_retweets 
+FROM user
+INNER JOIN tweet
+ON user.userid = tweet.user_id
+order by tweet.total_retweets asc limit 1; 
+
+-- 13. Retrieve the comments for a retweet deleted by its user who first posted and later deleted
+
+select tweet.tweet_caterogy, tweet.tweet_caption, tweet.post_id, retweet.retweet_id, retweet.retweet_status
+from tweet
+INNER JOIN retweet
+ON tweet.post_id = retweet.tweet_id
+where retweet_status = "deleted";
+
+-- 14.Retrieve the users along with its Geo locations from where the tweets are posted and
+-- when it was posted
+
+SELECT COUNT(tweet_id), Country
+FROM geolocation
+GROUP BY Country;
+
+-- 15. Retrieve the tweet with letter su in anywhere in the tweet caption.
+select tweet_caption
+from tweet
+where tweet_caption like "%su%" ;
+
+
+
+
+      
+
+
+
+      
+      
+      
+      
