@@ -1,0 +1,39 @@
+1.Retrieve all the employees (nodes). 
+
+Match(u:user) return u 
+
+2. List the first name, last name and salary of all employees.
+
+Match (u:user) return u.firstname, u.lastname, u.phone_number
+
+3. Retrieve all employees (nodes) who work for the 'Sales' department.
+
+
+MATCH (u:user)-[post_In]->(t:tweet{tweet_caterogy:'text'}) RETURN u,t 
+
+4.  Retrieve all employees (nodes) who work for the „Sales‟, departments (nodes) 
+and their relationship.
+
+MATCH (u:user)-[post_In]->(t:tweet{tweet_caterogy:'video'})-
+[Response_by]->(c:comment) RETURN u,t,c
+
+5. 
+
+MATCH (u:user)-[post_In]->(t:tweet{tweet_caterogy:'text'}) RETURN u,t.total_retweets >= 50 
+
+6. 
+
+MATCH (n:profile_page) RETURN n.screen_name , n.follower_count > 500
+
+7.
+
+Match (t:tweet) return t.tweet_caterogy, t.tweet_caption,t.post_id        order BY t.tweet_caption
+
+8. 
+
+MATCH (u:user)-[post_In]->(t:tweet{tweet_caterogy:'video'})-
+[Response_by]->(c:comment) Where c.total_likes >= 400   RETURN u,t,c 
+
+9. 
+
+MATCH (t:tweet)-[Reposted_In]->(r:retweet) where r.created_date > "2018-1-1" RETURN t,r 
